@@ -15,6 +15,7 @@ introduce_bg = pygame.image.load('images/bg.jpg')
 intro_bg = pygame.image.load('images/02.png')
 bar=pygame.image.load('images/bottom-bar.png')
 start_bg=pygame.image.load('images/startbg.jpg')
+tt_bg=pygame.image.load('images/text.png')
 pause=pygame.image.load('images/pause.png')
 
 
@@ -118,6 +119,8 @@ def start():
 
     while 1:
         screen.blit(start_bg,(0,0))
+        tt_rect = pygame.Rect(80, 80, 298, 74)
+        screen.blit(tt_bg, tt_rect)
         button_rect = pygame.Rect(360, 353, 298, 74)
         intro_btn = pygame.Rect(360, 450, 298, 74)
         mouse_pos = pygame.mouse.get_pos()
