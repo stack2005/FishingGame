@@ -173,15 +173,15 @@ def start():
 def introduce():
     # 鱼类数据加载
     fish_types = [
-        {'id': 1, 'name': '林星宇', 'img': 'fishi1.png'},
-        {'id': 2, 'name': 'fish2', 'img': 'fishi2.png'},
-        {'id': 3, 'name': 'fish2', 'img': 'fishi3.png'},
-        {'id': 4, 'name': 'fish2', 'img': 'fishi4.png'},
-        {'id': 5, 'name': 'fish2', 'img': 'fishi5.png'},
-        {'id': 6, 'name': 'fish2', 'img': 'fishi6.png'},
-        {'id': 7, 'name': 'fish2', 'img': 'fishi7.png'},
-        {'id': 8, 'name': 'fish2', 'img': 'fishi8.png'},
-        {'id': 9, 'name': 'fish2', 'img': 'fishi9.png'},
+        {'id': 1, 'name': '小金鱼', 'img': 'fishi1.png'},
+        {'id': 2, 'name': '小丑鱼', 'img': 'fishi2.png'},
+        {'id': 3, 'name': '红杉鱼', 'img': 'fishi3.png'},
+        {'id': 4, 'name': '蓝星鱼', 'img': 'fishi4.png'},
+        {'id': 5, 'name': '绿刺豚', 'img': 'fishi5.png'},
+        {'id': 6, 'name': '芋螺', 'img': 'fishi6.png'},
+        {'id': 7, 'name': '粉粉水母', 'img': 'fishi7.png'},
+        {'id': 8, 'name': '灯笼鱼', 'img': 'fishi8.png'},
+        {'id': 9, 'name': '刺魟鱼', 'img': 'fishi9.png'},
 
     ]
 
@@ -243,7 +243,7 @@ def fish_detail(fish_type):
 
         # 显示大图和信息面板
         big_img = pygame.image.load(f'images/fishi{fish_type}.png')
-        screen.blit(big_img, (300, 350))
+        screen.blit(big_img, (280, 350))
 
         # 绘制信息文字
         font = pygame.font.Font('C:/Windows/Fonts/simhei.ttf', 28)
@@ -251,12 +251,14 @@ def fish_detail(fish_type):
             f"名称: {detail['name']}",
             f"血量: {detail['hp']}",
             f"出现条件: {detail['condition']}",
-            f"详细描述: {detail['desc']}"
+            # 使用split('\n')处理换行符
+            *[f"详细描述: {line}" if i == 0 else f"          {line}"
+              for i, line in enumerate(detail['desc'].split('\n'))]
         ]
         y_offset = 250
         for line in lines:
             text = font.render(line, True, (255, 255, 255))
-            screen.blit(text, (500, y_offset))
+            screen.blit(text, (450, y_offset))
             y_offset += 50
 
         # 返回按钮
